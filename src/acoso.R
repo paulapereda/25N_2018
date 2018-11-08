@@ -40,3 +40,13 @@ ggplot(df_perpetradores, aes(reorder(genero, frecuencia), porcentaje, label = po
         axis.text.y = element_blank(),
         axis.ticks.y = element_blank()) +
   labs(caption = 'Fuente: No me halaga, me molesta. Colectivo Catalejo.')
+
+#Denunciantes según edad
+
+df_den_edad <- read_xlsx(here('data', 'acoso.xlsx'), sheet = 'denunciantes_edad') %>% 
+  clean_names() %>% 
+  filter(edad != "Total") %>% 
+  select(-total_denunciantes) %>% 
+  gather(-edad, key = sexo, value = porcentaje)
+
+
